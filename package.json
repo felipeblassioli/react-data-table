@@ -34,7 +34,10 @@
     ]
   },
   "scripts": {
-    "start": "watchify -o js/bundle.js -v -d js/app.js",
-    "build": "browserify js/components/DataTable.react.js -t [envify --NODE_ENV production] --s bla | uglifyjs -cm > js/bundle.min.js"
+    "start": "watchify -x react -x jquery -x underscore -o js/bundle.js -v -d js/app.js --s ReactUI",
+    "build-vendor": "browserify -r react -r jquery -r underscore > js/vendor.js",
+    "build-debug": "browserify -x react -x jquery -x underscore js/app.js --s ReactUI > js/bundle.js",
+    "build-min": "browserify -x react -x jquery -x underscore js/app.js --s ReactUI -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "build": "npm run build-debug && npm run build-min"
   }
 }

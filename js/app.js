@@ -33,4 +33,7 @@ React.render(
 	document.getElementById('app')
 );
 
-module.exports = DataTable;
+module.exports = {
+	"DataTable": DataTable,
+	"ReadOnlyTable": ReadOnlyTable
+};
