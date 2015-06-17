@@ -1,0 +1,40 @@
+{
+  "name": "react-data-table",
+  "version": "1.0.0",
+  "description": "React component/class that displays data in a table.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipeblassioli/react-data-table.git"
+  },
+  "author": "Felipe Blassioli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipeblassioli/react-data-table/issues"
+  },
+  "homepage": "https://github.com/felipeblassioli/react-data-table",
+  "main": "js/app.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "react": "^0.13.1",
+    "underscore": "latest",
+    "jquery": "latest",
+
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "jest-cli": "^0.4.3",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"
+  },
+  "browserify": {
+    "transform": [
+      ["reactify", {"harmony": true}],
+      "envify"
+    ]
+  },
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d js/app.js",
+    "build": "browserify js/components/DataTable.react.js -t [envify --NODE_ENV production] --s bla | uglifyjs -cm > js/bundle.min.js"
+  }
+}
